@@ -5,7 +5,7 @@ $('#form-data').ajaxForm({
     success: function(data) {
         //判断
         if (data.code == 200) {
-            alert('登录成功');
+            // alert('登录成功');
             location.href = '/dist';
             //使用本地存储方法：储存数据:参数只能是字符串
             //使用json.stringify()

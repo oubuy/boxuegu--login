@@ -27,7 +27,9 @@
     <!--引擎模板  -->
     <script type="text/template" id="tpl">
         <div class="settings">
-            <form action="" class="form-horizontal">
+            <form id="teacher_form" action="/v6/teacher/modify" method="post" class="form-horizontal">
+                <!-- 必须要有id才可以，参数 -->
+                <input type="text" name='tc_id' value='{{tc_id}}'>
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">姓名</label>
                     <div class="col-xs-5">
@@ -55,10 +57,10 @@
                     <label for="" class="col-xs-3 control-label">性别</label>
                     <div class="col-xs-3">
                         <label class="radio-inline">
-                                    <input name="tc_gender" type="radio" {{tc_gender==0?'checked':''}}> 男
+                                    <input name="tc_gender" value='0' type="radio" {{tc_gender==0?'checked':''}}> 男
                                 </label>
                         <label class="radio-inline">
-                                    <input name="tc_gender" type="radio" {{tc_gender==1?'checked':''}}> 女
+                                    <input name="tc_gender" value='1' type="radio" {{tc_gender==1?'checked':''}}> 女
                                 </label>
                     </div>
                 </div>
@@ -103,22 +105,21 @@
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">入职日期</label>
                     <div class="col-xs-5">
-                        <input name="time" value='{{time}}' type="text" class="form-control input-sm">
+                        <input name="tc_join_date" value='{{tc_join_date}}' type="text" class="form-control input-sm">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">个人介绍</label>
                     <div class="col-xs-5 ckeditor">
                         <!--文本域没有value的属性  -->
-                        <textarea name="tc_introduce" rows="15" class="form-control input-sm">
-                            {{tc_introduce}}
+                        <textarea name="tc_introduce" rows="15" class="form-control input-sm">{{@tc_introduce}}
                         </textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-8">
                         <button type="submit" class="btn btn-success btn-sm pull-right">保 存</button>
-                        <a href="./repass.html" class="btn btn-link btn-sm pull-right">更改密码？</a>
+                        <a href="/dist/html/user/repass.html" class="btn btn-link btn-sm pull-right">更改密码？</a>
                     </div>
                 </div>
             </form>
