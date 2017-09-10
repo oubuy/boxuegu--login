@@ -1,2 +1,3 @@
 //读取加载模块
-require('./common/header')
+require('./common/header.js');
+require('./common/aside.js');

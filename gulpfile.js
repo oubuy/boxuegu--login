@@ -9,11 +9,17 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream'); //这个包可以吧普通的数据流转为vinyl对象文件格式
 // var buffer = require('vinyl-buffer');
 var buffer = require('vinyl-buffer') //这个包用于将vinyl流转化为buffered vinyl文件
-
+    //提取公共样式的插件
+var htmlReplace = require('gulp-html-replace');
 //html处理
 gulp.task('html', function() {
     // gulp.src(['src/html/**/*.html', 'index.html'])
     gulp.src(['src/**/*.html', 'index.html'])
+        .pipe(htmlReplace({
+            style: gulp.src('./src/html/common/style.html'),
+            aside: gulp.src('src/html/common/aside.html'),
+            header: gulp.src('src/html/common/header.html')
+        }))
         .pipe(htmlmin({ //还有四句代码
             collapseWhitespace: true, // 去掉空白字符
             minifyJS: true, //压缩页面JS
@@ -45,7 +51,6 @@ gulp.task('jsLib', function() {
     gulp.src(jsLibs)
         .pipe(concat('libra.js')) //合并到lib.js文件中
         .pipe(gulp.dest('dist/js'))
-
 });
 
 //打包commonjs模块----->只针对js代码打包
@@ -128,7 +133,7 @@ gulp.task('js', function() {
 //统一打包任务
 gulp.task('build', function() {
     //调用以上的任务
-    gulp.run(['html', 'less', 'jsLib', 'js']);
+    gulp.run(['html', 'less', 'js']);
 });
 //监听变化，自动修改
 gulp.task('default', function() {
