@@ -1,5 +1,6 @@
 var userinfoStr = localStorage.getItem('usernifo');
-//转对象
+console.log(222222222)
+    //转对象
 var usernifo = JSON.parse(userinfoStr);
 //获取图片的属性
 $('.aside img').attr('src', usernifo.tc_avatar);

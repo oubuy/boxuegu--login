@@ -1,3 +1,9 @@
+//获取本地储存的值
+var loginStr = localStorage.getItem('usernifo') || {};
+var loginData = JSON.parse(loginStr);
+var loginV = loginData.tc_avatar || '/public/img/default.png';
+$('.avatar img').attr('src', loginV);
+
 // 当用户点击登陆按钮的时候，这个插件ajaxForm方法会自动监听submit事件
 // 然后阻止浏览器默认的刷新提交，然后自动变成ajax的方式发送请求。
 $('#form-data').ajaxForm({

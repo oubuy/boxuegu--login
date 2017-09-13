@@ -29,7 +29,7 @@
         <div class="settings">
             <form id="teacher_form" action="/v6/teacher/modify" method="post" class="form-horizontal">
                 <!-- 必须要有id才可以，参数 -->
-                <input type="text" name='tc_id' value='{{tc_id}}'>
+                <input type="hidden" name='tc_id' value='{{tc_id}}'>
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">姓名</label>
                     <div class="col-xs-5">
