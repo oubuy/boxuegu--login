@@ -50,7 +50,7 @@
                 <!-- 标题 -->
                 <div class="title">
                     <h5>课时管理 <small>LESSON MANAGE</small></h5>
-                    <a src="javascript:;" data-toggle="modal" data-target="#chapterModal" class="btn btn-success btn-sm pull-right">
+                    <a id="btn-lesson-add" src="javascript:;" data-toggle="modal" data-target="#chapterModal" class="btn btn-success btn-sm pull-right">
                         <i class="fa fa-plus"></i>课时
                     </a>
                 </div>
@@ -85,8 +85,14 @@
                     <h4 class="modal-title">添加课时</h4>
                 </div>
                 <div class="modal-body">
-                    <form id='edit3_Form' action="/v6/course/chapter/modify" method='post' class="form-horizontal">
-                        <!-- 设置一个传id参数文本框 -->
+                    <!-- 如果有ct_id是编辑章节，如果没有是添加章节 -->
+                    <!-- cg_id属于ct_id的，ct_id属于ct_cs_id关于 -->
+                    <form id='edit3_Form' action="{tc_id?'/v6/course/chapter/modify':'/v6/course/chapter/add'}" method='post' class="form-horizontal">
+                        <!-- 设置一个传ct_cs_id的参数 -->
+                        <!-- ct_cs_id是后端为了确定你编辑添加的章节属于那个课程，这个值咱们可以从location.search中提取 -->
+                        <input type="hidden" name='ct_cs_id' value='{{ct_cs_id}}'>
+                        <!-- 设置一个传ct_id参数文本框 -->
+                        <!-- ct_id是编辑章节时后端为了区分你编辑的是谁 -->
                         <input type="hidden" name='ct_id' value='{{ct_id}}'>
                         <div class="form-group">
                             <label for="" class="col-xs-2 control-label">标题</label>
