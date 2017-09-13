@@ -15,10 +15,13 @@ var htmlReplace = require('gulp-html-replace');
 gulp.task('html', function() {
     // gulp.src(['src/html/**/*.html', 'index.html'])
     gulp.src(['src/**/*.html', 'index.html'])
-        .pipe(htmlReplace({
+        .pipe(htmlReplace({ //代替相同的部分
             style: gulp.src('./src/html/common/style.html'),
             aside: gulp.src('src/html/common/aside.html'),
-            header: gulp.src('src/html/common/header.html')
+            header: gulp.src('src/html/common/header.html'),
+            courseEditHeader: gulp.src('src/html/common/course/header.html'),
+            courseEditaside: gulp.src('src/html/common/course/aside.html'),
+
         }))
         .pipe(htmlmin({ //还有四句代码
             collapseWhitespace: true, // 去掉空白字符

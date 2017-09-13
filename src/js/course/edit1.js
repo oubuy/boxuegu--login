@@ -6,8 +6,12 @@ var util = require('../common/util.js');
 var cs_id = util.getSearch('cs_id'); //cs_id是一个键
 //数据动态渲染
 $.get('/v6/course/basic', { cs_id: cs_id }, function(data) {
-    var html = template('edit1_one', data.result);
-    $('#edit1_form').append(html);
+    if (data.code == 200) {
+        //自定义设置是第几步
+        data.result.editIndex = 1;
+        var html = template('edit1_one', data.result);
+        $('#edit1_form').append(html);
+    }
 });
 
 
