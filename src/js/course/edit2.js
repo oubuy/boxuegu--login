@@ -9,7 +9,7 @@ var cs_id = util.getSearch('cs_id'); //因为是键值对形式，直接穿个�
 $.get('/v6/course/picture', { cs_id: cs_id }, function(data) {
     if (data.code == 200) {
         //自定义设置是第几步
-        data.result.editIndex = 1;
+        data.result.editIndex = 2;
         var html = template('edit2_two', data.result);
         $('#edit2_step').append(html);
     }
