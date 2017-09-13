@@ -24,11 +24,20 @@ $(document).on('click', '.btn-lesson-edit', function() {
     var data = {
         ct_id: $(this).attr('data-id')
     };
-    console.log(data)　
+    // console.log(data)　
     $.get('/v6/course/chapter/edit', data, function(data) {
         if (data.code == 200) {
             //获取当前id返还的对应的值，用来渲染
             $('#chapterModal').html(template('edit3_modal', data.result))
         }
     })
+});
+//提交
+$('#edit3_Form').ajaxForm({
+    delegation: true,
+    success: function(data) {
+        if (data.code == 200) {
+            alert('提交成功');
+        }
+    }
 })

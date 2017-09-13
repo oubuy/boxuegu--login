@@ -85,7 +85,9 @@
                     <h4 class="modal-title">添加课时</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="" class="form-horizontal">
+                    <form id='edit3_Form' action="/v6/course/chapter/modify" method='post' class="form-horizontal">
+                        <!-- 设置一个传id参数文本框 -->
+                        <input type="hidden" name='ct_id' value='{{ct_id}}'>
                         <div class="form-group">
                             <label for="" class="col-xs-2 control-label">标题</label>
                             <div class="col-xs-6">
@@ -133,12 +135,17 @@
                                 <p class="help-block">（如未设置，则默认学习时长为视频时长3倍取整。）</p>
                             </div>
                         </div>
+                        <!-- 修改提交按钮 -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">取消</button>
+                            <button type="submit" class="btn btn-success btn-sm">{{ ct_id? '保 存': '添 加' }} </button>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">取消</button>
                     <button type="button" class="btn btn-success btn-sm"> 添 加 </button>
-                </div>
+                </div> -->
             </div>
         </div>
     </script>
