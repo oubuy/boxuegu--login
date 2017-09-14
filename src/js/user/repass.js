@@ -1,6 +1,7 @@
 require('../common/aside');
 require('../common/header');
 
+require('../common/loading.js');
 require('../common/common.js');
 //修改密码
 $('#re_pass').on('submit', function() {

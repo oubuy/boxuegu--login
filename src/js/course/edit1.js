@@ -1,8 +1,10 @@
 require('../common/header');
 require('../common/aside');
+require('../common/loading.js');
+require('../common/common.js');
 var util = require('../common/util.js');
 
-require('../common/common.js');
+
 
 //获取cs_id
 var cs_id = util.getSearch('cs_id'); //cs_id是一个键

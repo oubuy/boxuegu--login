@@ -1,6 +1,7 @@
 require('../common/aside.js');
 require('../common/header.js');
 
+require('../common/loading.js');
 require('../common/common.js');
 //添加讲师
 

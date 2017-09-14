@@ -1,6 +1,7 @@
 require('../common/header');
 require('../common/aside');
 
+require('../common/loading.js');
 require('../common/common.js');
 //获取对应的id
 var util = require('../common/util.js');

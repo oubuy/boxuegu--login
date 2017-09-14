@@ -1,6 +1,7 @@
 require('../common/aside.js');
 require('../common/header.js');
 
+require('../common/loading.js');
 require('../common/common.js');
 //请求加载切割字符串获取id的封装函数
 var util = require('../common/util.js');

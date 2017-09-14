@@ -1,6 +1,7 @@
 require('../common/aside');
 require('../common/header');
 
+require('../common/loading.js');
 require('../common/common.js');
 //添加
 $('#course_Add').ajaxForm(function(data) {
