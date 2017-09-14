@@ -48,9 +48,17 @@ $(document).on('click', '.btn-lesson-edit', function() {
         }
     })
 });
-//提交模态框数据
+//提交模态框数据  
 $('#edit3_Form').ajaxForm({
     delegation: true,
+    //成功回调时，判断
+    beforeSubmit: function(arrData, $form, options) { //这几个参数，插件会自动传给后台处理
+        arrData.push({
+                name: 'ct_is_free',
+                value: $('#ct_is_free').prop('checked') ? 1 : 0
+            })
+            // console.log(arrData)
+    },
     success: lessonSuccess
 });
 
