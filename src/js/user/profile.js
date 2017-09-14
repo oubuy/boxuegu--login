@@ -1,6 +1,7 @@
 require('../common/header');
 require('../common/aside');
 
+require('../common/common.js');
 //引擎模板的请求的后天数据
 $.ajax({
     url: '/v6/teacher/profile',

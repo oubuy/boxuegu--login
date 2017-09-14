@@ -1,6 +1,6 @@
 require('../common/header');
 require('../common/aside');
-
+require('../common/common.js');
 
 //请求获取id号
 var util = require('../common/util.js');

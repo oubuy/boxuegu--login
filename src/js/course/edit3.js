@@ -1,5 +1,7 @@
 require('../common/header');
 require('../common/aside');
+
+require('../common/common.js');
 //获取对应的id
 var util = require('../common/util.js');
 var cs_id = util.getSearch('cs_id');
@@ -18,6 +20,10 @@ $.get('/v6/course/lesson', { cs_id: cs_id }, function(data) {
  + * 1、因为章节列表是动态生成的，所以需要通过委托的方式给编辑按钮绑定click事件
  + * 2、事件触发时获取按钮身上自定义属性记录的ct_id，用来请求接口获取数据
  + * 3、数据渲染模态框模版，插入到页面中
+
+ cs_id	number	课程id
+ct_id	number	章节id
+ct_cs_id	number	章节所属课程
  + * */
 $(document).on('click', '.btn-lesson-edit', function() {
     //获取当前的章节id ct_id
@@ -28,7 +34,7 @@ $(document).on('click', '.btn-lesson-edit', function() {
     $.get('/v6/course/chapter/edit', data, function(data) {
         if (data.code == 200) {
             //自定义一个ct_id属性的值   后端需要这个值来区分修改的章节属于那个课程
-            data.result.ct_id = ct_id;
+            data.result.cs_id = cs_id;
             //获取当前id返还的对应的值，用来渲染
             $('#chapterModal').html(template('edit3_modal', data.result))
         }
@@ -47,7 +53,7 @@ $('#edit3_Form').ajaxForm({
  + * 2、事件触发时使用一个空对象渲染模态框模版，插入到页面中
  + * */
 $(document).on('click', '#btn-lesson-add', function() {
-    var html = template('edit3_modal', { cs_id: cs_id }); //cs_id必须要传
+    var html = template('edit3_modal', { cs_id: cs_id }); //cs_id必须要传,对应93行value的值
     $('#chapterModal').html(html);
 });
 
@@ -62,7 +68,7 @@ function lessonSuccess(data) {
 
     if (data.result) {
         alert('添加成功');
-        $('#lesson-form').get(0).reset();
+        $('#edit3_Form')[0].reset();
     } else {
         alert('修改成功');
     }

@@ -1,6 +1,8 @@
 //加载请求
 require('../common/header');
 require('../common/aside');
+
+require('../common/common.js');
 //展示列表
 $.ajax({
     url: '/v6/teacher',

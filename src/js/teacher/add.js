@@ -1,5 +1,7 @@
 require('../common/aside.js');
 require('../common/header.js');
+
+require('../common/common.js');
 //添加讲师
 
 $('#teacherAdd').on('submit', function() {

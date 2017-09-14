@@ -1,7 +1,7 @@
 require('../common/aside');
 require('../common/header');
 
-
+require('../common/common.js');
 //修改密码
 $('#re_pass').on('submit', function() {
     //判断新和确认密码是否一致

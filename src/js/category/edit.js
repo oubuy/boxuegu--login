@@ -1,6 +1,8 @@
 require('../common/aside.js');
 require('../common/header.js');
 var util = require('../common/util');
+
+require('../common/common.js');
 /*功能点：
 + * 1、数据回显，需要确定你编辑的是那个学科
 + * 2、表单提交*/

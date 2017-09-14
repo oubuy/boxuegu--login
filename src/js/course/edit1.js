@@ -2,6 +2,8 @@ require('../common/header');
 require('../common/aside');
 var util = require('../common/util.js');
 
+require('../common/common.js');
+
 //获取cs_id
 var cs_id = util.getSearch('cs_id'); //cs_id是一个键
 //数据动态渲染

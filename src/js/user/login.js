@@ -1,3 +1,4 @@
+require('../common/common.js');
 //获取本地储存的值
 var loginStr = localStorage.getItem('usernifo') || {};
 var loginData = JSON.parse(loginStr);

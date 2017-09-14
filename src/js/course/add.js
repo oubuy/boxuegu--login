@@ -1,5 +1,7 @@
 require('../common/aside');
 require('../common/header');
+
+require('../common/common.js');
 //添加
 $('#course_Add').ajaxForm(function(data) {
     if (data.code == 200) {
