@@ -112,7 +112,8 @@ function upLessons(ct_id) {
         lessons.splice(index, 1, lessonData);
 
     };
-    console.log(lessons);
+    // console.log(lessons);
+    $('#lesson-list').html(template('lesson-list-tpl', lessons));
 };
 /**
  + * 返回模态框form数据构成的对象：

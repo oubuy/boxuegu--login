@@ -55,7 +55,7 @@
                     </a>
                 </div>
                 <div class="lessons">
-                    <ul class="list-unstyled">
+                    <ul id='lesson-list' class="list-unstyled">
                         {{each lessons lesson i}}
                         <li>
                             <i class="fa fa-file-video-o"></i>
@@ -76,18 +76,37 @@
         </div>
     </script>
 
+    <!-- 编辑章节列表模板 -->
+    <script type="text/template" id="lesson-list-tpl">
+        {{each $data lesson i}}
+        <li>
+            <i class="fa fa-file-video-o"></i>
+            <span class="order">课时：{{i+1}}</span>
+            <span class="name">{{lesson.ct_name}}</span>
+            <span class="duration">{{lesson.ct_video_duration}}</span>
+            <!-- 操作 -->
+            <div class="action pull-right">
+                <!-- cs_id 课程id   ct_id 章节id -->
+                <a href="#chapterModal" data-id='{{lesson.ct_id}}' class="btn-lesson-edit btn btn-info btn-xs" data-toggle="modal" data-target="#chapterModal">编辑</a>
+                <a href="javascript:;" data-id='{{lesson.ct_id}}' class="btn btn-danger btn-xs">删除</a>
+            </div>
+        </li>
+        {{/each}}
+    </script>
+
+
     <!-- 添加模态框模板引擎 -->
     <script type="text/template" id="edit3_modal">
         <div class="modal-dialog" style="width: 800px;">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">添加课时</h4>
+                    <h4 class="modal-title">{{ ct_id? '编辑章节': '添加章节' }}</h4>
                 </div>
                 <div class="modal-body">
                     <!-- 如果有ct_id是编辑章节，如果没有是添加章节 -->
                     <!-- cg_id属于ct_id的，ct_id属于ct_cs_id关于 -->
-                    <form id='edit3_Form' action="{{tc_id?'/v6/course/chapter/modify':'/v6/course/chapter/add'}}" method='post' class="form-horizontal">
+                    <form id='edit3_Form' action="{{ ct_id?'/v6/course/chapter/modify':'/v6/course/chapter/add'}}" method='post' class="form-horizontal">
                         <!-- 设置一个传ct_cs_id的参数,返回一个cs_id课程id -->
                         <!-- ct_cs_id是后端为了确定你编辑添加的章节属于那个课程，这个值咱们可以从location.search中提取 -->
                         <input type="hidden" name='ct_cs_id' value='{{ cs_id }}'>
@@ -110,9 +129,7 @@
                         <div class="form-group">
                             <label for="" class="col-xs-2 control-label">简介</label>
                             <div class="col-xs-8">
-                                <textarea name="ct_brief" rows="5" class="form-control input-sm">
-                                    {{ct_brief}}
-                                </textarea>
+                                <textarea name="ct_brief" rows="5" class="form-control input-sm">{{ct_brief}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
