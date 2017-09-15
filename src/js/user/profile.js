@@ -41,6 +41,7 @@ $('#teacher_form').ajaxForm({ //这个插件会自动帮我们发送请求
 
 //封装时间
 function initPlugin() {
+    //日期插件
     $('input[name=tc_birthday]').datepicker({
         language: 'zh-CN',
         format: 'yy-mm-dd',
@@ -51,4 +52,16 @@ function initPlugin() {
         format: 'yy-mm-dd',
         endDate: new Date('2050-07-01')
     });
+    //三级联动插件
+    $('#region-container').region({
+        url: '/lib/jquery-region/region.json'
+    });
+
+
+    // 富文本编辑器
+    window.edit = CKEDITOR.replace('introduce', {
+        width: 800,
+        skin: 'moono-lisa'
+    });
+
 }
