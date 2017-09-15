@@ -41,7 +41,7 @@ gulp.task('less', function() {
 });
 //处理js
 
-//配置要打包的第三包路径
+//配置要打包的第三包路
 //引入第三包，使用数组，方便
 var jsLibs = [
     'node_modules/art-template/lib/template-web.js',
@@ -50,6 +50,11 @@ var jsLibs = [
     'node_modules/jquery-form/dist/jquery.form.min.js',
     'node_modules/jquery.cookie/jquery.cookie.js',
     'node_modules/nprogress/nprogress.js',
+    'node_modules/bootstrap-datepicker/js/bootstrap-datepicker.js',
+    'node_modules/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.js',
+    'lib/jquery-Jcrop/js/Jcrop.js',
+    'lib/jquery-region/jquery.region.js',
+    'lib/jquery-uploadify/jquery.uploadify.js',
 ];
 //合并所有的第三方包为一个js
 gulp.task('jsLib', function() {
